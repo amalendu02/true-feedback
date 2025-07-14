@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import mongoose from "mongoose";
 
 type ConnectionObject = {
@@ -13,6 +16,7 @@ async function dbConnect(): Promise<void> {
     }
     
     try {
+        // console.log(" MONGODB_URI being used:", process.env.MONGODB_URI);
         const db =  await mongoose.connect(process.env.MONGODB_URI || '', {})
 
         connection.isConnected = db.connections[0].readyState
@@ -21,6 +25,7 @@ async function dbConnect(): Promise<void> {
     } catch (error) {
         console.log("Database connection failed", error);
         process.exit(1)
+        // throw error;
     }
 }
 
