@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "@/Context/AuthProvider";
+import { Toaster } from "@/components/ui/sonner"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
       <AuthProvider>
       <body className={inter.className}>
         {children}
+        <Toaster />
       </body>
       </AuthProvider>
     </html>
